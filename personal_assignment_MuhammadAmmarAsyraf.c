@@ -61,7 +61,7 @@ int main()
         		printf("Your Name: %s \n", name);
         		close(pipe1[0]);
         	}
-        	else if (pid1 > 0)
+        	else 
         	{
         		close(pipe2[1]);
         		read(pipe2[0], message, 100);
