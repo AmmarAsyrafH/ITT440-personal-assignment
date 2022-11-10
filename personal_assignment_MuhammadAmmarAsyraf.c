@@ -9,7 +9,11 @@
 
 
 
-void sighandler(int sig);
+void sighandler(int sig) 
+{
+   printf("Process interrupted\n");
+   exit(1);
+}
 int main()
 {
 	
@@ -39,15 +43,15 @@ int main()
         	
         	if (pid1 > 0) 
           	{
-        	printf("Enter Name: \n");
-            	scanf("%s", name); 
-                printf("\n Write a message (not exceed 3 words) \n");
-                scanf(" %[^\n]s" ,message);
-            	write(pipe1[1], name,100);
-            	write(pipe2[1], message,100);
-            	close(pipe1[1]);
-            	close(pipe2[1]);
-        		wait(NULL);
+			printf("Enter Name: \n");
+			scanf("%s", name); 
+			printf("\n Write a message (not exceed 3 words) \n");
+			scanf(" %[^\n]s" ,message);
+			write(pipe1[1], name,100);
+			write(pipe2[1], message,100);
+			close(pipe1[1]);
+			close(pipe2[1]);
+			wait(NULL);
         	}
         	
         	if (pid1 == 0 )
@@ -69,9 +73,4 @@ int main()
         	return 0;
         
 	
-}
-void sighandler(int sig) 
-{
-   printf("Process interrupted\n");
-   exit(1);
 }
